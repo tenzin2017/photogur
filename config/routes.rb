@@ -3,7 +3,13 @@ Rails.application.routes.draw do
  root 'pictures#index'
   get 'pictures' => 'pictures#index'
 
-  post 'pictures' => 'pictures#create'
+  delete 'pictures/:id' => 'pictures#destroy'
+
+  get 'pictures/:id/edit' => 'pictures#edit'
+  patch 'pictures/:id' => 'pictures#update'
+
   get 'pictures/new' => 'pictures#new'
   get 'pictures/:id' => 'pictures#show'
+
+
 end
