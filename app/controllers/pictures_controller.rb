@@ -1,6 +1,13 @@
 class PicturesController < ApplicationController
+
+
   def index
+      time = Time.now - 1.month
+      year = Time.current
       @pictures = Picture.all
+      @most_recent_pictures = Picture.most_recent_five
+      @created_before_1_month = Picture.created_before(time)
+      @created_in_year = Picture.created_in_year(year)
   end
 
   def show
