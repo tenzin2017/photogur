@@ -1,20 +1,34 @@
 <h1> Add a picture </h1>
 
   <%= link_to("Back to pictures", "/pictures") %>
-  <%= form_for(@picture) do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title%>
-  </p>
-  <p>
-    <%= f.label :artist %><br>
-    <%= f.text_field :artist%><br>
-  </p>
-  <p>
-    <%= f.label :url %><br>
-    <%= f.text_field :url%><br>
-  </p>
-  <p>
-    <%= f.submit "Save"%>
-  </p>
-  <% end%>
+
+<% if @picture.errors.any? %>
+<div id="erro_explanation">
+  <h2><%= pluralize(@picture.errors.count, "error") %>
+    prohibited this picture from being saved: </h2>
+
+    <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<%= form_for(@picture) do |f| %>
+<p>
+  <%= f.label :title %><br>
+  <%= f.text_field :title%>
+</p>
+<p>
+  <%= f.label :artist %><br>
+  <%= f.text_field :artist%><br>
+</p>
+<p>
+  <%= f.label :url %><br>
+  <%= f.text_field :url%><br>
+</p>
+<p>
+  <%= f.submit "Save"%>
+</p>
+<% end%>

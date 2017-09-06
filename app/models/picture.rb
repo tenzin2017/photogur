@@ -19,7 +19,4 @@ class Picture < ApplicationRecord
   def self.created_in_year(year)
     Picture.where(:created_at => year.beginning_of_year..year.end_of_year)
 end
-                  #  extract(year from created_at) = ?   and extract(month from created_at) = ?', '2013','7')
-
-
 end
