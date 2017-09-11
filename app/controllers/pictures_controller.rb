@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-
+  before_action :ensure_logged_in, except: [:show, :index]
 
   def index
       time = Time.now - 1.month
